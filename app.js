@@ -36,8 +36,6 @@ subscribeRabbitMq = async (queueName) => {
     })
 }
 
-const Auth = require("./middleware/auth");
-const {rateLimitMiddleware} = require("./middleware/rateLimiter")
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -63,9 +61,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+const Auth = require("./middleware/auth");
+const {rateLimitMiddleware} = require("./middleware/rateLimiter")
+
 app.use('/', indexRouter);
 app.use('/users',usersRouter);
-app.use('/game',[Auth.checkAuthToken],gameRouter);
+app.use('/game',[Auth.checkAuthToken],gameRouter); //Globally authenticated for entire endpoints
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -5,12 +5,13 @@ const GameController = require("../controllers/GameData");
 const Auth = require("../middleware/auth")
 const {rateLimitMiddleware }= require("../middleware/rateLimiter")
 
-router.post('/createEntry',rateLimitMiddleware,GameController.createEntry);
+//Authentication middleware has been used globally in app.js file for entire /game/* endpoints
+router.post('/createEntry',GameController.createEntry);
 
 router.post('/getGameData',GameController.getGameData);
 
-router.get('/updateGameData',Auth.checkAuthToken,GameController.updateGameData);
+router.get('/updateGameData',GameController.updateGameData);
 
-router.post('/deleteEntry',Auth.checkAuthToken,GameController.deleteEntry);
+router.post('/deleteEntry',GameController.deleteEntry);
 
 module.exports = router;
