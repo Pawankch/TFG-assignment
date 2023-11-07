@@ -1,10 +1,10 @@
-name: Print when successfully Pushed to master branch
+name: Print when successfully Pushed to main branch
 
 on:
     push:
-      branches: master
+      branches: main
     pull_request:
-      branches: master
+      branches: main
 
 jobs:
     print:
@@ -16,6 +16,6 @@ jobs:
       
             - name: Print Message
               run: |
-                echo "Code has been pushed to the master branch Successfully"
+                echo "Code has been pushed to the main branch Successfully"
                 echo "We can do something here."
         
