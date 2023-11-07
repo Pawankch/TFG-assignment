@@ -2,7 +2,7 @@ const UserServices = require("../services/Users");
 const bcrypt = require("bcrypt");
 const common = require("../util/common");
 const RESPONSE = require("../util/constants");
-const Auth = require("../services/auth");
+const Auth = require("../middleware/auth");
 const users = require("../models/user");
 
 const createUser = async (req,res) => {

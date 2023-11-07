@@ -2,7 +2,7 @@ const axios = require("axios")
 const common = require("../util/common");
 const RESPONSE = require("../util/constants")
 const GameData = require("../models/GameData")
-const Auth = require("../services/auth");
+const Auth = require("../middleware/auth");
 
 const createEntry = async (req,res) => {
     try{

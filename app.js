@@ -36,7 +36,7 @@ subscribeRabbitMq = async (queueName) => {
     })
 }
 
-const Auth = require("./services/auth");
+const Auth = require("./middleware/auth");
 const {rateLimitMiddleware} = require("./middleware/rateLimiter")
 
 var indexRouter = require('./routes/index');
