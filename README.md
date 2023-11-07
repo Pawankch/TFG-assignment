@@ -51,6 +51,8 @@
      It everything matches, it returns with token that needs to be passed in next apis.
 
 ## game-entry
+
+    Auth check has been implemented globally in app.js file for below end-points
   1. create entry
      Before accessing this api, user needs to be authenticated first.
      It add the new entry in MongoDB's GameData collections.
@@ -77,6 +79,8 @@
     2. constant.js
         It consist of api response codes
         Other static thing can also be mentioned in this file like url,filepath etc.
+
+
 
 
 
