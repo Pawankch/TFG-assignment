@@ -6,6 +6,16 @@ var logger = require('morgan');
 const fs = require("fs");
 const amqp = require("amqplib")
 
+const http = require("http");
+const server = http.createServer(app)
+const socketIO = require("socket.io")(server);
+
+socketIO.on('connection',(socket)=>{
+  console.log('IO server connected');
+  socket.on('event',(message)=>{
+    console.log(message)
+  })
+})
 //Connecting rabbitmq
 const mqUrl = `amqp://user:Pawan@4321@13.127.212.137:5672/node_project`
 
@@ -86,9 +96,9 @@ app.use(function(err, req, res, next) {
 });
 
 
-app.listen(4000, async (err) => {
+server.listen(4000, async (err) => {
   if (err) throw err;
-  await subscribeRabbitMq('userRegister')
+  // await subscribeRabbitMq('userRegister')
   console.log('> Ready on http://localhost:4000')
 })
 
